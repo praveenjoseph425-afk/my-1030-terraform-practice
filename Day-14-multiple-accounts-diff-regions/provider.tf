@@ -10,3 +10,8 @@ provider "aws" {
     region = "us-west-2"
   
 }
+
+#before we have integrate the accounts 
+
+aws configure --profile dev-account
+aws configure --profile dev

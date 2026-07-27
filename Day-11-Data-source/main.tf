@@ -1,19 +1,19 @@
 
-data "aws_subnet" "name" {
+# data "aws_subnet" "name" {
 
-  filter {
-    name   = "tag:Name"
-    values = ["subnet-1"]
-  }
+#   filter {
+#     name   = "tag:Name"
+#     values = ["subnet-1"]
+#   }
 
-}
+# }
 
-data "aws_security_group" "selected" {
-  filter {
-    name   = "tag:Name"
-    values = ["my-security-group"] #fetch the security group with the tag Name=my-security-group
-  }
-}
+# data "aws_security_group" "selected" {
+#   filter {
+#     name   = "tag:Name"
+#     values = ["my-security-group"] #fetch the security group with the tag Name=my-security-group
+#   }
+# }
 
 
 data "aws_ami" "amzlinux-backend" {
@@ -39,7 +39,10 @@ data "aws_ami" "amzlinux-backend" {
 resource "aws_instance" "name" {
   ami                    = data.aws_ami.amzlinux-backend.id
   instance_type          = "t2.micro"
-  subnet_id              = data.aws_subnet.name.id
-  vpc_security_group_ids = [data.aws_security_group.selected.id]
+#   subnet_id              = data.aws_subnet.name.id
+#   vpc_security_group_ids = [data.aws_security_group.selected.id]
+tags = {
+  Name = "dev"
+}
 
 }
