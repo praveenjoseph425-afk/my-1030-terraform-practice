@@ -1,6 +1,6 @@
 terraform {
   backend "s3" {
-    bucket = "dev-test-prod-nit"
+    bucket = "manasutho"
     key    = "terraform.tfstate"
     region = "us-east-1"
     #use_lockfile = true ##supports terrafrom latest version >=1.10
